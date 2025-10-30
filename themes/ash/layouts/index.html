@@ -1,0 +1,18 @@
+{{ define "main" }}
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ if gt (len $posts) 0 }}
+    {{ $p := .Paginate $posts }}
+    <div class="article-list">
+      {{ range $p.Pages }}
+        <article>
+          {{ .Render "article-header" }}
+          {{ .Render "article-summary" }}
+        </article>
+        <hr class="article-divider"/>
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
+  {{ else }}
+    <p>No posts yet.</p>
+  {{ end }}
+{{ end }}

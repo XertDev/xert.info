@@ -1,0 +1,18 @@
+<header class="article-head">
+    <h1 class="article-title">
+        <a href="{{ .Permalink }}" rel="bookmark">
+            {{ .Title }}
+        </a>
+    </h1>
+    {{ if .PublishDate }}
+    {{ if and (ne .Kind "term") (ne .Data.Singular "tag") }}
+    <div class="article-info">
+        <p>
+            <time datetime="{{ .PublishDate }}">
+                {{ .PublishDate | time.Format ":date_medium" }}
+            </time>
+        </p>
+    </div>
+    {{ end }}
+    {{ end }}
+</header>

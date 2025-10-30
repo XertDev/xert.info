@@ -1,0 +1,27 @@
+<header>
+    <nav class="navbar">
+        <a href="{{ urls.RelURL "" }}" class="navbar-home" rel="home" aria-label="Home">
+            {{ .Site.Title }}
+        </a>
+
+        <input type="checkbox" class="nav-button" id="nav-btn"/>
+
+        <div class="navbar-header-toggles">
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" aria-pressed="false">🌙</button>
+
+            <label class="nav-icon" for="nav-btn" aria-label="Toggle navigation" aria-controls="navbar-items">
+                <span class="nav-bars"></span>
+            </label>
+        </div>
+
+        <ul class="navbar-items">
+        {{ if .Site.Menus.main }}
+            {{ range .Site.Menus.main }}
+            <li>
+                <a href="{{ .URL }}">{{ .Name | upper }}</a>
+            </li>
+            {{ end }}
+        {{ end }}
+        </ul>
+    </nav>
+</header>

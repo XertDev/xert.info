@@ -1,0 +1,15 @@
+<aside class="sidebar" role="complementary" aria-label="Sidebar">
+  <div class="sidebar-content">
+    {{- $params := site.Params.sidebar -}}
+    {{- with $params.title }}
+      <div class="sidebar-header">{{ . }}</div>
+    {{- end }}
+
+    {{/* Determine which modules to render. Default to ["social", "taglist"] if not specified */}}
+    {{- $modules := $params.modules | default (slice "social" "taglist") -}}
+
+    {{- range $i, $m := $modules -}}
+      {{- partial (printf "sidebar/%s.html" $m) . -}}
+    {{- end -}}
+  </div>
+</aside>

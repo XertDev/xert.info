@@ -1,0 +1,25 @@
+{{ define "main" }}
+    {{ if and (eq .Kind "term") (eq .Data.Singular "tag") }}
+<div class="tags">
+  <h1>Tag: {{ .Title }}</h1>
+</div>
+    {{ end }}
+    {{ if .Pages }}
+        {{ if and (eq .Kind "term") (eq .Data.Singular "tag") }}
+<div class="tag-list">
+        {{ else }}
+<div class="article-list">
+        {{ end }}
+        {{ range .Paginator.Pages }}
+    <article>
+            {{ .Render "article-header" }}
+            {{ .Render "article-summary" }}
+    </article>
+            {{ if and (ne .Kind "term") (ne .Data.Singular "tag") }}
+    <hr class="article-divider"/>
+            {{ end }}
+        {{ end }}
+</div>
+{{ partial "pagination.html" . }}
+    {{ end }}
+{{ end }}

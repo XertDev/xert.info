@@ -1,0 +1,15 @@
+<div class="sidebar-box sidebar-taglist">
+  <h3 class="sidebar-header">Tags</h3>
+  {{- $tags := site.Taxonomies.tags -}}
+  {{- if $tags -}}
+    <ul>
+      {{- range $t := $tags.ByCount -}}
+        <li>
+          <a href="{{ add (absURL `tags/`) ($t.Name | urlize) }}">{{ $t.Name }} ({{ $t.Count }})</a>
+        </li>
+      {{- end -}}
+    </ul>
+  {{- else -}}
+    <p>No tags yet.</p>
+  {{- end -}}
+</div>

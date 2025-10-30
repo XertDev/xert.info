@@ -1,0 +1,22 @@
+{{- $items := site.Params.sidebar.social -}}
+{{- if $items }}
+<div class="sidebar-box">
+  <ul class="sidebar-social" aria-label="Social links">
+    {{- range $i := $items -}}
+      {{- $name := .name | default .Name | default "" -}}
+      {{- $url := .url | default .URL | default "#" -}}
+      {{- $icon := .icon | default .Icon | default "" -}}
+      <li>
+        <a href="{{ $url }}" target="_blank" rel="me noopener" aria-label="{{ $name }}">
+          {{- if $icon -}}
+            <i class="{{ $icon }}" aria-hidden="true"></i>
+          {{- else -}}
+            <span class="fas">{{ $name }}</span>
+          {{- end -}}
+        </a>
+      </li>
+    {{- end -}}
+  </ul>
+  <hr class="sidebar-divider"/>
+</div>
+{{- end -}}

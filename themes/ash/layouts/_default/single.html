@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="article">
+    {{ if .Title }}
+    <h1 class="page-title article-title">{{ .Title }}</h1>
+    {{ end }}
+    {{ if and (ne .Kind "term") (ne .Data.Singular "tag") }}
+    <div class="article-info">
+        <p class="article-date">{{ .PublishDate }}</p>
+        {{ if .Params.Tags }}
+        <p class="tags">
+            Tags:
+            {{ range .Params.Tags }}
+              <a href="{{ add (absURL `tags/`) (.) }}">{{ . }}</a>
+            {{ end }}
+        </p>
+    </div>
+    {{ end }}
+    {{ end }}
+    <hr class="article-divider"/>
+    <div class="page-content">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

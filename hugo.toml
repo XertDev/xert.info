@@ -1,0 +1,25 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = 'ash'
+
+[pagination]
+  disableAliases = true
+  pagerSize = 7
+  path = 'page'
+
+[params]
+  fontAwesomeURL = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+
+  [params.sidebar]
+    modules = ["social", "taglist"]
+
+    [[params.sidebar.social]]
+      name = "GitHub"
+      url  = "https://github.com/TWOJ_LOGIN"
+      icon = "fab fa-github"
+
+    [[params.sidebar.social]]
+      name = "LinkedIn"
+      url  = "https://www.linkedin.com/in/TWOJ_LOGIN/"
+      icon = "fab fa-linkedin"
