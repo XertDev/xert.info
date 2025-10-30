@@ -5,40 +5,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="generator" content="Hugo (Ash)"/>
 
-        <script>(function(){try{var k='theme';var s=localStorage.getItem(k);var t=s?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+        <script>
+            (function(){
+                try {
+                    const KEY='theme';
+                    const savedState=localStorage.getItem(KEY);
+                    const theme=savedState ? savedState : (
+                        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                            ? 'dark'
+                            : 'light'
+                    );
+                    document.documentElement.setAttribute('data-theme',theme);
+                } catch(e) {
+
+                }})();
+        </script>
         <meta name="color-scheme" content="light dark"/>
         <link rel="stylesheet" type="text/css" href="{{ absURL `css/style.css` }}"/>
-        {{ with site.Params.fontAwesomeURL }}
+        {{- with site.Params.fontAwesomeURL }}
         <link rel="stylesheet" href="{{ . }}"/>
-        {{ end }}
+        {{- end -}}
 
-        {{ if .Params.canonicalUrl }}
+        {{- if .Params.canonicalUrl -}}
         <link rel="canonical" href="{{ .Params.canonicalUrl }}">
         {{ else }}
         <link rel="canonical" href="{{ .Permalink }}">
         {{ end }}
 
-        {{ with .Params.author | compare.Default .Site.Params.author }}
+        {{- with .Params.author | compare.Default .Site.Params.author }}
           {{- $author := . -}}
           {{- if reflect.IsSlice . -}}
             {{- $author = collections.Delimit . ", " | transform.Plainify -}}
           {{- end -}}
         <meta name="author" content="{{ $author }}">
-        {{ end }}
-
+        {{- end }}
         <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 
-        {{ if .Site.Params.favicon }}
+        {{- if .Site.Params.favicon }}
         <link rel="shortcut icon" href="{{ urls.RelURL ($.Site.Params.favicon) }}" type="image/x-icon" />
         {{ end }}
-
-
         {{ if .OutputFormats.Get "RSS" }}
-        {{ with .OutputFormats.Get "RSS" }}
-          <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
-          <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
-          {{ end }}
-        {{ end }}
+        {{- with .OutputFormats.Get "RSS" }}
+        <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+        <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+          {{- end }}
+        {{- end }}
     </head>
     <body>
         {{ block "header" . }}{{ partials.IncludeCached "header.html" . }}{{ end }}
@@ -61,39 +72,61 @@
         </div>
         {{ block "footer" . }}{{ partials.IncludeCached "footer.html" . }}{{ end }}
         <script>
-        (function(){
-          var KEY='theme';
-          var doc=document.documentElement;
-          var btn=document.getElementById('theme-toggle');
-          function setTheme(t, persist){
-            doc.setAttribute('data-theme', t);
-            if(btn){
-              btn.setAttribute('aria-pressed', String(t==='dark'));
-              btn.textContent = t==='dark' ? '☀️' : '🌙';
-              btn.title = 'Przełącz motyw (obecnie: ' + (t==='dark'?'ciemny':'jasny') + ')';
+        (function() {
+            const KEY='theme';
+            const doc = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            function setTheme(theme, persist) {
+                doc.setAttribute('data-theme', theme);
+                if (btn) {
+                    btn.setAttribute('aria-pressed', String( theme ==='dark'));
+                    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+                    btn.title = 'Toggle theme(current: ' + (theme === 'dark' ? 'dark' : 'light') + ')';
+                }
+                if (persist) {
+                try {
+                    localStorage.setItem(KEY, theme);
+                } catch(e) {
+
+                }
+                }
             }
-            if(persist){
-              try{ localStorage.setItem(KEY, t); }catch(e){}
+
+            function getStored() {
+                try {
+                    return localStorage.getItem(KEY) || null;
+                } catch (e) {
+                    return null;
+                }
             }
-          }
-          function getStored(){ try{ return localStorage.getItem(KEY) || null; }catch(e){ return null; } }
-          var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-          function systemTheme(){ return (mq && mq.matches) ? 'dark' : 'light'; }
-          if(btn){
-            btn.addEventListener('click', function(){
-              var current = doc.getAttribute('data-theme') || systemTheme();
-              var next = current==='dark' ? 'light' : 'dark';
-              setTheme(next, true);
-            });
-          }
-          if(mq && mq.addEventListener){
-            mq.addEventListener('change', function(){
-              if(!getStored()){ setTheme(systemTheme(), false); }
-            });
-          } else if(mq && mq.addListener){
-            mq.addListener(function(){ if(!getStored()){ setTheme(systemTheme(), false); } });
-          }
-          setTheme(doc.getAttribute('data-theme') || systemTheme(), false);
+
+            const mediaQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+            function systemTheme() {
+                return (mediaQuery && mediaQuery.matches) ? 'dark' : 'light';
+            }
+
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    const current = doc.getAttribute('data-theme') || systemTheme();
+                    const next = current === 'dark' ? 'light' : 'dark';
+                    setTheme(next, true);
+                });
+            }
+            if (mediaQuery && mediaQuery.addEventListener) {
+                mediaQuery.addEventListener('change', function () {
+                    if (!getStored()) {
+                        setTheme(systemTheme(), false);
+                    }
+                });
+            } else if (mediaQuery && mediaQuery.addListener) {
+                mediaQuery.addListener(function () {
+                    if (!getStored()) {
+                        setTheme(systemTheme(), false);
+                    }
+                });
+            }
+            setTheme(doc.getAttribute('data-theme') || systemTheme(), false);
         })();
         </script>
     </body>
