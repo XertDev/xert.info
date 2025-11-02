@@ -5,7 +5,7 @@
     <ul>
       {{- range $t := $tags.ByCount -}}
         <li>
-          <a href="{{ add (absURL `tags/`) ($t.Name | urlize) }}">{{ $t.Name }} ({{ $t.Count }})</a>
+          <a href="{{ add (relURL `tags/`) ($t.Name | urlize) }}">{{ $t.Name }} ({{ $t.Count }})</a>
         </li>
       {{- end -}}
     </ul>

@@ -10,7 +10,7 @@
         <p class="tags">
             Tags:
             {{ range .Params.Tags }}
-              <a href="{{ add (absURL `tags/`) (.) }}">{{ . }}</a>
+              <a href="{{ add (relURL `tags/`) (.) }}">{{ . }}</a>
             {{ end }}
         </p>
     </div>
