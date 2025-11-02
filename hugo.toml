@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = "Xert's dev log"
 theme = 'ash'
 
+enableRobotsTXT = true
+
 [pagination]
   disableAliases = true
   pagerSize = 7
