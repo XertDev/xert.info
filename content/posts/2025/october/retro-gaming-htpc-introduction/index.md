@@ -1,7 +1,7 @@
 +++
 date = '2025-10-29T21:01:31+01:00'
 draft = false
-title = 'Retro Gaming PC Introduction'
+title = 'Retro Gaming PC - Introduction'
 tags = ["retro", "nixos", "games", "homelab"]
 +++
 
