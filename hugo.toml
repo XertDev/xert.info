@@ -1,6 +1,6 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://xert.info/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = "Xert's dev log"
 theme = 'ash'
 
 [pagination]
@@ -16,10 +16,5 @@ theme = 'ash'
 
     [[params.sidebar.social]]
       name = "GitHub"
-      url  = "https://github.com/TWOJ_LOGIN"
+      url  = "https://github.com/XertDev"
       icon = "fab fa-github"
-
-    [[params.sidebar.social]]
-      name = "LinkedIn"
-      url  = "https://www.linkedin.com/in/TWOJ_LOGIN/"
-      icon = "fab fa-linkedin"
