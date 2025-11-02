@@ -425,6 +425,16 @@ article .summary p {
     margin-top: 5em;
 }
 
+.page-content figure {
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+.page-content figure > figcaption {
+    padding-top: 0.5em;
+    font-size: 0.9em;
+}
+
 /* Helpers */
 .text-center {
     text-align: center;

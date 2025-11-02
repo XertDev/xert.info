@@ -1,0 +1,27 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $class := .Get "class" | default "" }}
+{{ $caption := .Get "caption" }}
+{{ $fit := .Get "fit" }}
+
+{{ $url := $src }}
+
+{{ if $fit }}
+    {{ $valid := findRE "^[0-9]*x[0-9]*$" $fit }}
+    {{ if $valid }}
+        {{ with .Page.Resources.GetMatch $src }}
+            {{ $img := .Fit $fit }}
+            {{ $url = $img.RelPermalink }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+
+{{ if $caption }}
+<figure class="image {{ $class }}">
+  <img src="{{ $url }}" alt="{{ $alt }}"/>
+  <figcaption>{{ $caption }}</figcaption>
+</figure>
+{{ else }}
+<img src="{{ $url }}" alt="{{ $alt }}" class="image {{ $class }}"/>
+{{ end }}
