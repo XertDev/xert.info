@@ -1,11 +1,10 @@
 {{ define "main" }}
-    {{ if and (eq .Kind "term") (eq .Data.Singular "tag") }}
-<div class="tags">
-  <h1>Tag: {{ .Title }}</h1>
-</div>
+    {{ $isTagList := and (eq .Kind "taxonomy") (eq .Data.Singular "tag") }}
+    {{ if $isTagList }}
+    <h1>Tags: </h1>
     {{ end }}
     {{ if .Pages }}
-        {{ if and (eq .Kind "term") (eq .Data.Singular "tag") }}
+        {{ if $isTagList }}
 <div class="tag-list">
         {{ else }}
 <div class="article-list">

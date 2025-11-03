@@ -1,5 +1,7 @@
 <div class="sidebar-box sidebar-taglist">
-  <h3 class="sidebar-header">Tags</h3>
+  <a href="{{ relURL `tags/` }}">
+    <h3 class="sidebar-header">Tags</h3>
+  </a>
   {{- $tags := site.Taxonomies.tags -}}
   {{- if $tags -}}
     <ul>

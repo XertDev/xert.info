@@ -1,11 +1,12 @@
+{{ $isTag := and (eq .Kind "term") (eq .Data.Singular "tag") }}
 <header class="article-head">
     <h1 class="article-title">
         <a href="{{ .RelPermalink }}" rel="bookmark">
-            {{ .Title }}
+            {{ .Title }} {{- if $isTag }}({{ len (.Site.Taxonomies.tags.Get .Data.Term) }}){{- end }}
         </a>
     </h1>
     {{ if .PublishDate }}
-    {{ if and (ne .Kind "term") (ne .Data.Singular "tag") }}
+    {{ if not $isTag }}
     <div class="article-info">
         <p>
             <time datetime="{{ .PublishDate }}">
