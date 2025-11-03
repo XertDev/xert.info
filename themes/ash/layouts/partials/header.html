@@ -8,10 +8,11 @@
 
         <div class="navbar-header-toggles">
             <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" aria-pressed="false">🌙</button>
-
+            {{ if and .Site.Menus.main (ne (len .Site.Menus.main) 0) }}
             <label class="nav-icon" for="nav-btn" aria-label="Toggle navigation" aria-controls="navbar-items">
                 <span class="nav-bars"></span>
             </label>
+            {{ end }}
         </div>
 
         <ul class="navbar-items">

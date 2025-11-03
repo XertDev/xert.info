@@ -175,6 +175,8 @@ body > header {
 /*Main container*/
 #main-container {
     display: flex;
+
+    width: 100%;
     flex-direction: column;
     flex: 1 1 auto;
 }
@@ -428,6 +430,10 @@ article .summary p {
 .page-content figure {
     text-align: center;
     padding: 0.5em 0;
+}
+
+.page-content img {
+    max-width: 100%;
 }
 
 .page-content figure > figcaption {
