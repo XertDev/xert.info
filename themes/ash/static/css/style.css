@@ -189,6 +189,7 @@ body > header {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    align-items: center;
 }
 
 #content > main {
@@ -196,6 +197,9 @@ body > header {
     flex-direction: column;
     flex: 1 1 auto;
     min-height: 100%;
+    max-width: min(100%, 900px);
+
+    padding-bottom: 1.5em;
 }
 
 /* Sidebar */
@@ -234,7 +238,7 @@ body > header {
     list-style: none;
 }
 
-  .sidebar .sidebar-social li a {
+.sidebar .sidebar-social li a {
     width: 1.4em;
     height: 1.4em;
     display: flex;
