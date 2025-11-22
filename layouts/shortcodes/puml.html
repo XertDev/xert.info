@@ -1,0 +1,42 @@
+{{/*
+Usage:
+  {{< puml src="diagram.puml" alt="My diagram" class="diagram" fit="800x500" >}}
+
+- Pass the original .puml filename as the first positional argument.
+- The shortcode will look for a rendered PNG at diagrams/<base>.png in the same page bundle.
+- Optional named params: alt, class, fit
+*/}}
+
+{{- $puml := .Get "src" -}}
+{{- if not $puml -}}
+  {{- errorf "puml shortcode requires the .puml filename as the src argument" -}}
+{{- end -}}
+
+{{- $alt := .Get "alt" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{ $caption := .Get "caption" }}
+{{ $fit := .Get "fit" }}
+
+{{- $base := replace $puml ".puml" "" -}}
+{{- $src := printf "diagrams/%s.png" $base -}}
+
+{{ $url := $src }}
+
+{{ if $fit }}
+    {{ $valid := findRE "^[0-9]*x[0-9]*$" $fit }}
+    {{ if $valid }}
+        {{ with .Page.Resources.GetMatch $src }}
+            {{ $img := .Fit $fit }}
+            {{ $url = $img.RelPermalink }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ if $caption }}
+<figure class="diagram {{ $class }}">
+  <img src="{{ $url }}" alt="{{ $alt }}"/>
+  <figcaption>{{ $caption }}</figcaption>
+</figure>
+{{ else }}
+<img src="{{ $url }}" alt="{{ $alt }}" class="image {{ $class }}"/>
+{{ end }}

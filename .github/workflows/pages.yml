@@ -32,6 +32,10 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-25.05
 
+      - name: Generate diagrams from puml files
+        run: |
+          nix develop --accept-flake-config -c ./scripts/puml-build.sh
+
       - name: Build site using Hugo via flake.nix
         env:
           HUGO_ENV: production

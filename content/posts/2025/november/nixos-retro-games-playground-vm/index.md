@@ -8,6 +8,8 @@ In my previous post I mentioned the idea of turning NixOS into a minimal retro g
 
 I’ll stick with a simple design, as the target hardware probably won’t be very powerful. I will choose one of the thin clients that I have in my collection.
 
+<!--more-->
+
 ## Virtual test environment
 However, before I start working on the real hardware, it’s better to test changes on a virtual machine. NixOS can easily be configured to run in a virtual machine, which should make testing easier and faster. Each iteration is simply a new run of the virtual machine.
 

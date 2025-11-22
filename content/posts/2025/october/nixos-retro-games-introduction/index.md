@@ -3,6 +3,7 @@ date = '2025-10-29T21:01:31+01:00'
 draft = false
 title = 'NixOS + Retro Games - Introduction'
 tags = ["retro", "nixos", "games", "homelab"]
+summary ="This is the first post on this blog and also the first post of a series where I'll try to develop a NixOs-based distribution packed with all the goodies required to play some older games on TV without any hassle."
 +++
 
 ## Introduction

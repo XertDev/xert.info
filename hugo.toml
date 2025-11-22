@@ -3,6 +3,9 @@ languageCode = 'en-us'
 title = "Xert's dev log"
 theme = 'ash'
 
+# Ignore PlantUML source files in the output
+ignoreFiles = ['\\.puml$']
+
 enableRobotsTXT = true
 
 [pagination]

@@ -445,6 +445,10 @@ article .summary p {
     font-size: 0.9em;
 }
 
+.footnotes p {
+    margin: 0.2em 0;
+}
+
 /* Helpers */
 .text-center {
     text-align: center;
@@ -569,6 +573,9 @@ html[data-theme="dark"] th, html[data-theme="dark"] td { border-color: #333; }
 
 /* Code blocks (fallback; pygments CSS might also apply) */
 html[data-theme="dark"] pre, html[data-theme="dark"] code { background-color: #141414; color: #e6e6e6; }
+
+/* Diagrams (puml generated) */
+html[data-theme="dark"] .diagram img { filter: invert(100%) hue-rotate(180deg); }
 
 /* Pagination */
 html[data-theme="dark"] .pagination a { color: #ddd; }

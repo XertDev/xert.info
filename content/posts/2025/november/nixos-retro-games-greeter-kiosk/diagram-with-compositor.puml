@@ -1,0 +1,31 @@
+@startuml
+
+left to right direction
+
+skinparam shadowing false
+skinparam backgroundColor transparent
+skinparam defaultTextAlignment center
+
+skinparam rectangle {
+  BackgroundColor transparent
+  BorderColor #555555
+  FontColor #333333
+}
+skinparam title {
+  FontColor #444444
+}
+skinparam ArrowColor #666666
+skinparam ArrowFontColor #666666
+
+
+rectangle "System Boot" as boot
+rectangle "greetd\n(autologin)" as greetd
+rectangle "Compositor\n(cage)" as comp
+rectangle "Launcher" as launcher #line.dashed
+
+
+boot --> greetd : start daemon
+greetd --> comp : spawn session
+comp -[dashed]> launcher : run launcher
+
+@enduml
