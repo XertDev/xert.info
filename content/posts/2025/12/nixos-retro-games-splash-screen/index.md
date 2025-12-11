@@ -143,7 +143,7 @@ Finally, I generate a set of frames that will loop until the system finishes boo
 The complete animation looks like this: 
 {{< image alt="plymouth animation" src="animation.webp" caption="Splash screen animation">}}
 
-The full script is available [here](./snippet).
+[//]: # (The full script is available [here]&#40;./snippet&#41;.)
 
 In the next post, I will show the Plymouth configuration for NixOS and how to combine these generated frames into a working splash screen. 
 
