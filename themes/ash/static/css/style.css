@@ -683,3 +683,21 @@ html[data-theme="dark"] .theme-toggle {
         color: #ccc;
     }
 }
+
+.image-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+    margin: 0.5em 0;
+}
+
+.page-content figure.image-row {
+    text-align: center;
+}
+
+.page-content figure.image-row > figcaption {
+    width: 100%;
+    margin-top: 0.4em;
+    font-size: 0.9em;
+}

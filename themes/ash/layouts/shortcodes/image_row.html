@@ -1,0 +1,25 @@
+{{/*
+Usage:
+
+  {{< image_row gap="0.75em" class="my-row" caption="Group caption" >}}
+    {{< image src="img1.png" alt="Alt 1" fit="300x300" class="thumb" >}}
+    {{< image src="img2.png" alt="Alt 2" fit="200x200" class="thumb" >}}
+    {{< image src="img3.png" alt="Alt 3" fit="300x200" class="thumb" >}}
+  {{< /image_row >}}
+*/}}
+
+{{- $class := .Get "class" | default "" -}}
+{{- $gap := .Get "gap" | default "" -}}
+{{- $caption := .Get "caption" -}}
+
+{{- $style := "" -}}
+{{- if $gap -}}
+  {{- $style = printf "gap:%s;" $gap -}}
+{{- end -}}
+
+<figure class="image-row {{ $class }}" style="{{ $style }}">
+  {{- .Inner -}}
+  {{- if $caption }}
+  <figcaption>{{ $caption }}</figcaption>
+  {{- end -}}
+</figure>
