@@ -1,6 +1,7 @@
 +++
 date = '2025-12-09T00:13:46+01:00'
 title = 'Nixos + Retro Games - Splash Screen pt.1'
+tags = ["retro", "plymouth", "python"]
 [build]
     list='always'
     render = "always"
@@ -143,7 +144,7 @@ Finally, I generate a set of frames that will loop until the system finishes boo
 The complete animation looks like this: 
 {{< image alt="plymouth animation" src="animation.webp" caption="Splash screen animation">}}
 
-[//]: # (The full script is available [here]&#40;./snippet&#41;.)
+The full script is available [here](https://gist.github.com/XertDev/e0c416a3faf8b0d1eb709ed9c1b515ed).
 
 In the next post, I will show the Plymouth configuration for NixOS and how to combine these generated frames into a working splash screen. 
 
