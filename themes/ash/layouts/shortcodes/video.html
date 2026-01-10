@@ -1,0 +1,9 @@
+{{ $src := .Get "src" }}
+{{ $class := .Get "class" | default "" }}
+{{ $width := .Get "width" | default "100%" }}
+
+{{ $url := $src }}
+
+<video controls width="{{ $width }}" class="video {{ $class }}">
+  <source src="{{ $url }}" type="video/webm">
+</video>
