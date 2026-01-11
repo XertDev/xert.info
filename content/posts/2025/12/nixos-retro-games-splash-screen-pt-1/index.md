@@ -1,6 +1,6 @@
 +++
 date = '2025-12-09T00:13:46+01:00'
-title = 'Nixos + Retro Games - Splash Screen pt.1'
+title = 'NixOS + Retro Games - Splash Screen pt.1'
 tags = ["retro", "plymouth", "python"]
 [build]
     list='always'
