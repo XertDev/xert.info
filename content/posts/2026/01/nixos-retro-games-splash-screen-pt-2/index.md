@@ -10,6 +10,8 @@ The motivation was simple: limit visual noise and provide a better experience fo
 
 In this post, I want to focus on finishing that work. The remaining task is preparing the Plymouth scripts. Additionally, I want to pack everything as a NixOS package that can be used as a standard plymouth theme package.
 
+<!--more-->
+
 ## Plymouth implementation
 Creating a Plymouth theme itself is relatively simple.
 
